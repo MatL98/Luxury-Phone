@@ -119,7 +119,7 @@ function addItemCarrito(newItem) {
     }
     carrito.push(newItem);
     renderCarrito();
-    setLocalStorage();
+    
     carritoTotalFinal();
 }
 
@@ -130,6 +130,7 @@ function carritoTotalFinal() {
     });
     
     document.querySelector(".tbody").append(`Total de la compra: $ ${totalItems}`);
+    setLocalStorage();
     getLocalStorage();
 }
 

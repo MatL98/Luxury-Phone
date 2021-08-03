@@ -160,18 +160,12 @@ form {
     align-items: center;
     border: 1px solid #b6b6b6;
     background: rgb(255, 255, 255);
-    background: linear-gradient(
-    141deg,
-    rgba(218, 165, 32, 1) 0%,
-    rgba(191, 152, 142, 1) 50%,
-    rgba(188, 143, 143, 1) 100%
-    );
-    border-radius: 0% 100% 0% 100% / 50% 50% 50% 50%;
+    border-radius: 20%;
 }
 .form-label {
     font-size: 1.2rem;
         text-transform: uppercase;
-    color: aliceblue;
+    color: #e4a106;
 }
 .form-check-label{
   text-align: center;
