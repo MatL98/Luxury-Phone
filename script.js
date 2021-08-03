@@ -71,13 +71,12 @@ for (const phone of phones) {
     containerC.tabIndex = phone;
 }
 
-    const bodyCarrito = document.querySelector(".tbody");
 
-    //Boton que agrega items al carrito
-    const clickButton = document.querySelectorAll("#btn-carrito");
-    clickButton.forEach((btn) => {
+//Boton que agrega items al carrito
+const clickButton = document.querySelectorAll("#btn-carrito");
+clickButton.forEach((btn) => {
     btn.addEventListener("click", addToCarrito);
-    });
+});
 
 function addToCarrito(e) {
     const button = e.target;
@@ -89,7 +88,7 @@ function addToCarrito(e) {
     const iva = ivaDeItem(value);
     const envio = costoEnvio(value);
     const total = totalItem(value, iva, envio);
-
+    
     const newItem = {
         title: title,
         price: value,
@@ -101,48 +100,49 @@ function addToCarrito(e) {
     };
     addItemCarrito(newItem);
 }
-
-    const costoEnvio = (s) => s * 0.3;
-    const ivaDeItem = (x) => x * 0.21;
-    const totalItem = (a, b, c) => a + b + c;
+//Funciones para el carrito
+const costoEnvio = (s) => s * 0.3;
+const ivaDeItem = (x) => x * 0.21;
+const totalItem = (a, b, c) => a + b + c;
 
 function addItemCarrito(newItem) {
     const inputCantidad = bodyCarrito.querySelector("#cantidad");
-        
-        for (let i = 1; i < carrito.length; i++) {
-            if (carrito[i].title === newItem.title) {
-                carrito[i].cantidad;
-                const inputValue = inputCantidad[i];
-                inputValue.value;
-                //return null;
-                console.log(inputValue)
-            }
+    
+    for (let i = 1; i < carrito.length; i++) {
+        if (carrito[i].title === newItem.title) {
+            carrito[i].cantidad;
+            const inputValue = inputCantidad[i];
+            inputValue.value;
+            //return null;
+            console.log(inputValue)
         }
+    }
     carrito.push(newItem);
     renderCarrito();
     setLocalStorage();
     carritoTotalFinal();
 }
 
-    function carritoTotalFinal() {
+function carritoTotalFinal() {
     let totalItems = 0;
     carrito.map((car) => {
         totalItems = car.total;
     });
-
+    
     document.querySelector(".tbody").append(`Total de la compra: $ ${totalItems}`);
     getLocalStorage();
-    }
+}
 
-    function renderCarrito() {
+const bodyCarrito = document.querySelector(".tbody");
+function renderCarrito() {
     bodyCarrito.innerHTML = "";
     carrito.map((item) => {
         const tr = document.createElement("tr");
         tr.classList.add("itemCarrito");
         const contenido = `
-            <td scope="row">${item.id}</td>
-            <td class="table__telefono">${item.title}</td>
-            <td class="table__precio">$: ${item.price}</td>
+        <td scope="row">${item.id}</td>
+        <td class="table__telefono">${item.title}</td>
+        <td class="table__precio">$: ${item.price}</td>
             <td class="table__cantidad">
                 <input type="number" id="cantidad"  value="${item.cantidad}">
                 <button class="btn btn-delete-${item.id}" id="btn-delete-${item.id}">x</button>
