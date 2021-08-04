@@ -43,14 +43,10 @@ const phones = [
   },
 ];
 
-
-
-
-
 //Pinto en el html el array de objetos y los selecciono
 for (const phone of phones) {
-    let containerC = document.createElement("div");
-    $("#rowCards").append(`
+  let containerC = document.createElement("div");
+  $("#rowCards").append(`
         <div class="card" style="width: 18rem;">
         <img src="${phone.img}" class="card-img-top" alt="...">
         <div class="card-body">
@@ -68,37 +64,36 @@ for (const phone of phones) {
         </div>
                                 `);
 
-    containerC.tabIndex = phone;
+  containerC.tabIndex = phone;
 }
-
 
 //Boton que agrega items al carrito
 const clickButton = document.querySelectorAll("#btn-carrito");
 clickButton.forEach((btn) => {
-    btn.addEventListener("click", addToCarrito);
+  btn.addEventListener("click", addToCarrito);
 });
 
 function addToCarrito(e) {
-    const button = e.target;
-    const item = button.closest(".card");
-    const title = item.querySelector(".card-title").textContent;
-    const price = item.querySelector("#price").textContent;
-    const value = parseInt(price);
-    const id = item.querySelector("#id").textContent;
-    const iva = ivaDeItem(value);
-    const envio = costoEnvio(value);
-    const total = totalItem(value, iva, envio);
-    
-    const newItem = {
-        title: title,
-        price: value,
-        id: id,
-        iva: iva,
-        envio: envio,
-        total: total,
-        cantidad: 1,
-    };
-    addItemCarrito(newItem);
+  const button = e.target;
+  const item = button.closest(".card");
+  const title = item.querySelector(".card-title").textContent;
+  const price = item.querySelector("#price").textContent;
+  const value = parseInt(price);
+  const id = item.querySelector("#id").textContent;
+  const iva = ivaDeItem(value);
+  const envio = costoEnvio(value);
+  const total = totalItem(value, iva, envio);
+
+  const newItem = {
+    title: title,
+    price: value,
+    id: id,
+    iva: iva,
+    envio: envio,
+    total: total,
+    cantidad: 1,
+  };
+  addItemCarrito(newItem);
 }
 //Funciones para el carrito
 const costoEnvio = (s) => s * 0.3;
@@ -106,41 +101,43 @@ const ivaDeItem = (x) => x * 0.21;
 const totalItem = (a, b, c) => a + b + c;
 
 function addItemCarrito(newItem) {
-    const inputCantidad = bodyCarrito.querySelector("#cantidad");
-    
-    for (let i = 1; i < carrito.length; i++) {
-        if (carrito[i].title === newItem.title) {
-            carrito[i].cantidad;
-            const inputValue = inputCantidad[i];
-            inputValue.value;
-            //return null;
-            console.log(inputValue)
-        }
+  const inputCantidad = bodyCarrito.querySelector("#cantidad");
+
+  for (let i = 1; i < carrito.length; i++) {
+    if (carrito[i].title === newItem.title) {
+      carrito[i].cantidad;
+      const inputValue = inputCantidad[i];
+      inputValue.value;
+      //return null;
+      console.log(inputValue);
     }
-    carrito.push(newItem);
-    renderCarrito();
-    
-    carritoTotalFinal();
+  }
+  carrito.push(newItem);
+  renderCarrito();
+
+  carritoTotalFinal();
 }
 
 function carritoTotalFinal() {
-    let totalItems = 0;
-    carrito.map((car) => {
-        totalItems = car.total;
-    });
-    
-    document.querySelector(".tbody").append(`Total de la compra: $ ${totalItems}`);
-    setLocalStorage();
-    getLocalStorage();
+  let totalItems = 0;
+  carrito.map((car) => {
+    totalItems = car.total;
+  });
+
+  document
+    .querySelector(".tbody")
+    .append(`Total de la compra: $ ${totalItems}`);
+  setLocalStorage();
+  getLocalStorage();
 }
 
 const bodyCarrito = document.querySelector(".tbody");
 function renderCarrito() {
-    bodyCarrito.innerHTML = "";
-    carrito.map((item) => {
-        const tr = document.createElement("tr");
-        tr.classList.add("itemCarrito");
-        const contenido = `
+  bodyCarrito.innerHTML = "";
+  carrito.map((item) => {
+    const tr = document.createElement("tr");
+    tr.classList.add("itemCarrito");
+    const contenido = `
         <td scope="row">${item.id}</td>
         <td class="table__telefono">${item.title}</td>
         <td class="table__precio">$: ${item.price}</td>
@@ -153,27 +150,28 @@ function renderCarrito() {
             <td class="table__total">$:${item.total}</td>
             `;
 
-        tr.innerHTML = contenido;
-        bodyCarrito.appendChild(tr);
+    tr.innerHTML = contenido;
+    bodyCarrito.appendChild(tr);
 
-        document.getElementById("btn-delete-" + item.id).addEventListener(
-        "click", removeItemCarrito);
-    });
-    }
+    document
+      .getElementById("btn-delete-" + item.id)
+      .addEventListener("click", removeItemCarrito);
+  });
+}
 
-    function removeItemCarrito(e) {
-    e.target.parentNode.parentNode.remove();
-    } 
+function removeItemCarrito(e) {
+  e.target.parentNode.parentNode.remove();
+}
 
-    //Almacena datos del carrito
-    function setLocalStorage() {
-    localStorage.setItem("carrito", JSON.stringify(carrito));
-    }
+//Almacena datos del carrito
+function setLocalStorage() {
+  localStorage.setItem("carrito", JSON.stringify(carrito));
+}
 
-    function getLocalStorage() {
-    if (localStorage.getItem("carrito")) {
-        let itemDeCarrito = JSON.parse(localStorage.getItem("carrito"));
-        carrito = itemDeCarrito
-        console.log(itemDeCarrito);
-    } else "no hay entradas";
+function getLocalStorage() {
+  if (localStorage.getItem("carrito")) {
+    let itemDeCarrito = JSON.parse(localStorage.getItem("carrito"));
+    carrito = itemDeCarrito;
+    console.log(itemDeCarrito);
+  } else "no hay entradas";
 }

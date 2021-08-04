@@ -1,26 +1,31 @@
-
-
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-    background-color: whitesmoke;
+  background-color: whitesmoke;
 }
 
-.navbar__nav-color{
+            /* NAVBAR */
+.navbar__nav-color {
   background-color: whitesmoke;
   box-shadow: 0px 1px 6px black;
 }
-.nav{
+.title {
+  text-align: left;
+  color: rosybrown;
+  text-shadow: #e6bf53 3px 0px;
+  font-size: 2.5rem;
+}
+.nav {
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
 }
-.nav-item{
+.nav-item {
   background-color: none;
   text-transform: uppercase;
   font-family: "Roboto", sans-serif;
@@ -28,13 +33,11 @@ body {
   margin: 0px 0.2rem;
   letter-spacing: 1px;
 }
-
 .nav-link {
   position: relative;
   display: inline-flex;
   overflow: hidden;
 }
-
 .nav-link > span {
   color: white;
   position: relative;
@@ -43,7 +46,6 @@ body {
 .nav-link-color > span {
   color: #e4a106;
 }
-
 .nav-link::before {
   content: "";
   position: absolute;
@@ -56,28 +58,27 @@ body {
   background: #e6bf53;
   transition: width 0.5s, height 0.5s;
 }
-
 .nav-link:hover:before {
   width: 300px;
   height: 300px;
 }
-
 #modal {
   background-color: rgb(28, 160, 28);
   width: 25%;
   box-shadow: 0px 0px 4px black;
   display: flex;
   justify-content: center;
-  margin: 0 auto;
+  margin: 0.5rem auto;
+  z-index: 1000;
 }
-#section__home{
+#section__home {
   display: flex;
   justify-content: center;
-  background-image: url(./img/pexels-daria-shevtsova-1440727.jpg);
+  background: url(./img/pexels-daria-shevtsova-1440727.jpg) fixed;
   height: 1200px;
   background-size: cover;
 }
-.container__homepage{
+.container__homepage {
   margin: 0rem 1.5rem;
 }
 .hero-span {
@@ -91,8 +92,7 @@ body {
   text-transform: uppercase;
   text-shadow: 2px 5px 15px #e4a106;
 }
-
-.hero-span-2{
+.hero-span-2 {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -101,6 +101,11 @@ body {
   color: white;
   text-shadow: 2px 5px 15px black;
   text-align: right;
+}
+
+      /* SECTION CELS */
+#section__cels {
+  margin-top: 4rem;
 }
 .btn {
   background-color: rgb(231, 220, 220);
@@ -111,20 +116,11 @@ body {
   color: rgb(78, 78, 78);
   letter-spacing: 1px;
 }
-
 .btn-success {
   background-color: rgb(28, 160, 28);
   color: aliceblue;
   width: 25%;
 }
-
-.title {
-  text-align: left;
-  color: rosybrown;
-  text-shadow: #e6bf53 3px 0px;
-  font-size: 2.5rem;
-}
-
 .subtitle {
   font-family: "Roboto", sans-serif;
   color: rosybrown;
@@ -132,9 +128,28 @@ body {
   text-shadow: #e6bf53 2px 0px;
   display: flex;
   justify-content: center;
+  margin-bottom: 2.5rem;
 }
-
-
+#animado-1,
+#animado-2,
+#animado-3 {
+  opacity: 0;
+  transition: all 0.5s;
+}
+.moveLeft {
+  animation: move 2s;
+}
+@keyframes move {
+  0% {
+    transform: translateX(-160px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+#modal {
+  display: none;
+}
 #rowCards {
   justify-content: space-around;
 }
@@ -149,45 +164,54 @@ body {
 
 .card-title {
   font-size: 30px;
+  font-family: "Roboto", sans-serif;
+  font-weight: 700;
 }
+
+      /* SECTION CART */
+#section__cart {
+  margin-top: 4rem;
+  height: 300px;
+}
+
+      /* SECTION FORM */
 form {
   margin: 0 auto;
 }
 .form {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    border: 1px solid #b6b6b6;
-    background: rgb(255, 255, 255);
-    border-radius: 20%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #b6b6b6;
+  background: rgb(255, 255, 255);
+  border-radius: 20%;
 }
 .form-label {
-    font-size: 1.2rem;
-        text-transform: uppercase;
-    color: #e4a106;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  color: #e4a106;
 }
-.form-check-label{
+.form-check-label {
   text-align: center;
 }
 #alert-mail,
 #alert-user,
 #alert-pass {
-    display: none;
-    color: whitesmoke;
-    background-color: rgb(255, 110, 110);
-}
-
-#modal{
-    display: none;
+  display: none;
+  color: whitesmoke;
+  background-color: rgb(255, 110, 110);
 }
 .alert-buy {
-    color: white;
-    font-size: 20px;
-    display: flex;
-    justify-content: center;
-    padding: 0.3rem;
+  color: white;
+  font-size: 20px;
+  display: flex;
+  justify-content: center;
+  padding: 0.3rem;
 }
+
+
+/* FOOTER */
 .container-footer {
   position: relative;
   width: 100%;
