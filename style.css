@@ -116,11 +116,7 @@ body {
   color: rgb(78, 78, 78);
   letter-spacing: 1px;
 }
-.btn-success {
-  background-color: rgb(28, 160, 28);
-  color: aliceblue;
-  width: 25%;
-}
+
 .subtitle {
   font-family: "Roboto", sans-serif;
   color: rosybrown;
@@ -147,9 +143,7 @@ body {
     transform: translateX(0);
   }
 }
-#modal {
-  display: none;
-}
+
 #rowCards {
   justify-content: space-around;
 }
@@ -167,17 +161,40 @@ body {
   font-family: "Roboto", sans-serif;
   font-weight: 700;
 }
+#modal{
+  position: fixed;
+    top: 50%;
+    left: 40%;
+    z-index: 1300;
+    width: 25%;
+    height: 5%;
+    overflow: hidden;
+    outline: 0;
+}
 
+.alert-buy {
+  color: white;
+  font-size: 20px;
+  display: flex;
+  justify-content: center;
+  padding: 0.3rem;
+}
       /* SECTION CART */
 #section__cart {
   margin-top: 4rem;
-  height: 300px;
+  overflow: scroll;
+}
+.btn-success {
+  background-color: rgb(28, 160, 28);
+  color: aliceblue;
 }
 
       /* SECTION FORM */
-form {
-  margin: 0 auto;
+
+#section__form{
+  margin-top: 12rem;
 }
+
 .form {
   display: flex;
   flex-direction: column;
@@ -185,7 +202,8 @@ form {
   align-items: center;
   border: 1px solid #b6b6b6;
   background: rgb(255, 255, 255);
-  border-radius: 20%;
+  padding: 0.5rem 0;
+  box-shadow: 0 0 5px rosybrown;
 }
 .form-label {
   font-size: 1.2rem;
@@ -195,20 +213,34 @@ form {
 .form-check-label {
   text-align: center;
 }
+.modal-overlay{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    transition: .5s ease;
+    z-index: -1;
+}
+.modal-title{
+  font-family: "Roboto", sans-serif;
+  font-weight: 800;
+  color: #e4a106;
+}
 #alert-mail,
 #alert-user,
-#alert-pass {
+#alert-pass,
+#alert-name {
   display: none;
   color: whitesmoke;
   background-color: rgb(255, 110, 110);
 }
-.alert-buy {
-  color: white;
-  font-size: 20px;
-  display: flex;
-  justify-content: center;
-  padding: 0.3rem;
+#btn-modal{
+  background-color:wheat;
 }
+
 
 
 /* FOOTER */
@@ -236,3 +268,4 @@ h4 {
   text-align: center;
   font-size: 1rem;
 }
+

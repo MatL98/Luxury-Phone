@@ -1,57 +1,16 @@
+import {phone1, phone2, phone3, phone4} from "./SmartPhones.js"
+
+const phones = [phone1, phone2, phone3, phone4]
 let carrito = [];
 
-const phones = [
-  {
-    id: 1,
-    modelo: "Samsung Galaxy S21 Ultra",
-    precio: 120000,
-    stock: 6,
-    caracteristicas: `Pantalla: 6,8 Dynamic Amoled
-                                Procesador: Exynos 2100  **
-                                Ram: 16 Gb`,
-    img: "/img/s21.png",
-  },
-  {
-    id: 2,
-    modelo: "Samsung Galaxy Note 20",
-    precio: 140000,
-    stock: 3,
-    caracteristicas: `Pantalla: 6,9 Dynamic Amoled
-                                Procesador: Exynos 990
-                                Ram: 12 Gb`,
-    img: "/img/note20.png",
-  },
-  {
-    id: 3,
-    modelo: "Iphone 11 pro MAX",
-    precio: 150000,
-    stock: 8,
-    caracteristicas: `Pantalla: 6,5 Oled Super Retina
-                                Procesador: Chip A13 Bionic
-                                Ram: 4 Gb`,
-    img: "/img/iphone11.png",
-  },
-  {
-    id: 4,
-    modelo: "Iphone 12 pro MAX",
-    precio: 175000,
-    stock: 10,
-    caracteristicas: `Pantalla: 6,7 Oled Super Retina
-                                Procesador: Chip A14 Bionic
-                                Ram: 6 Gb`,
-    img: "/img/iphone12.png",
-  },
-];
 
-//Pinto en el html el array de objetos y los selecciono
-for (const phone of phones) {
-  let containerC = document.createElement("div");
+  for(const phone of phones){
   $("#rowCards").append(`
         <div class="card" style="width: 18rem;">
         <img src="${phone.img}" class="card-img-top" alt="...">
         <div class="card-body">
             <h3 class="card-title" value= "">${phone.modelo}</h3>
-            <p class="card-text">${phone.caracteristicas}</p>
+            <p class="card-text">${phone.descr}</p>
         </div>
         <ul class="list-group list-group-flush">
             <li class="list-group-item" id="price">${phone.precio}</li>
@@ -64,10 +23,38 @@ for (const phone of phones) {
         </div>
                                 `);
 
-  containerC.tabIndex = phone;
 }
 
-//Boton que agrega items al carrito
+const bodyCarrito = document.querySelector(".tbody");
+function renderCarrito() {
+  bodyCarrito.innerHTML = "";
+  carrito.map((item) => {
+    var tr = document.createElement("tr");
+    tr.classList.add("itemCarrito");
+    const contenido = `
+        <td scope="row">${item.id}</td>
+        <td class="table__telefono">${item.title}</td>
+        <td class="table__precio">$: ${item.price}</td>
+            <td class="table__cantidad">
+                <input type="number" id="cantidad" readonly value="${item.cantidad}">
+                <button class="btn btn-delete-${item.id}" id="btn-delete-${item.id}">x</button>
+            </td>
+            <td class="table__iva">$: ${item.iva}</td>
+            <td class="table__envio">$:${item.envio}</td>
+            <td class="table__total">$:${item.total}</td>
+            `;
+
+    tr.innerHTML = contenido;
+    bodyCarrito.appendChild(tr);
+
+    document
+      .getElementById("btn-delete-" + item.id)
+      .addEventListener("click", removeItemCarrito);
+
+      cleanCarrito()
+  });
+}
+
 const clickButton = document.querySelectorAll("#btn-carrito");
 clickButton.forEach((btn) => {
   btn.addEventListener("click", addToCarrito);
@@ -95,7 +82,7 @@ function addToCarrito(e) {
   };
   addItemCarrito(newItem);
 }
-//Funciones para el carrito
+
 const costoEnvio = (s) => s * 0.3;
 const ivaDeItem = (x) => x * 0.21;
 const totalItem = (a, b, c) => a + b + c;
@@ -116,62 +103,59 @@ function addItemCarrito(newItem) {
   renderCarrito();
 
   carritoTotalFinal();
+  
 }
 
 function carritoTotalFinal() {
-  let totalItems = 0;
+  setLocalStorage("carrito", carrito);
+  console.log(carrito)
+  /* let totalItems = 0;
   carrito.map((car) => {
     totalItems = car.total;
   });
 
   document
     .querySelector(".tbody")
-    .append(`Total de la compra: $ ${totalItems}`);
-  setLocalStorage();
-  getLocalStorage();
-}
-
-const bodyCarrito = document.querySelector(".tbody");
-function renderCarrito() {
-  bodyCarrito.innerHTML = "";
-  carrito.map((item) => {
-    const tr = document.createElement("tr");
-    tr.classList.add("itemCarrito");
-    const contenido = `
-        <td scope="row">${item.id}</td>
-        <td class="table__telefono">${item.title}</td>
-        <td class="table__precio">$: ${item.price}</td>
-            <td class="table__cantidad">
-                <input type="number" id="cantidad"  value="${item.cantidad}">
-                <button class="btn btn-delete-${item.id}" id="btn-delete-${item.id}">x</button>
-            </td>
-            <td class="table__iva">$: ${item.iva}</td>
-            <td class="table__envio">$:${item.envio}</td>
-            <td class="table__total">$:${item.total}</td>
-            `;
-
-    tr.innerHTML = contenido;
-    bodyCarrito.appendChild(tr);
-
-    document
-      .getElementById("btn-delete-" + item.id)
-      .addEventListener("click", removeItemCarrito);
-  });
+    .append(`Total de la compra: $ ${totalItems}`); */
 }
 
 function removeItemCarrito(e) {
   e.target.parentNode.parentNode.remove();
+  
 }
+
+function cleanCarrito() { 
+  let list = document.querySelectorAll(".tbody")
+  let btnClean = document.querySelector("#clean")
+
+  btnClean.addEventListener("click" , function () {
+    list.forEach(c => {
+      c.remove()
+    });
+  })
+}
+
 
 //Almacena datos del carrito
-function setLocalStorage() {
-  localStorage.setItem("carrito", JSON.stringify(carrito));
+function setLocalStorage(itemName, item) {
+  let temp = JSON.parse(localStorage.getItem(itemName))
+  if(temp){
+    temp = {...temp, item}
+
+  }else{
+    temp = {item};
+  }
+  localStorage.setItem(itemName, JSON.stringify(temp));
 }
 
-function getLocalStorage() {
+function getLocalStorageOnload() {
   if (localStorage.getItem("carrito")) {
     let itemDeCarrito = JSON.parse(localStorage.getItem("carrito"));
-    carrito = itemDeCarrito;
-    console.log(itemDeCarrito);
-  } else "no hay entradas";
-}
+    carrito = itemDeCarrito.item;
+    renderCarrito()
+  } else {""}}
+  getLocalStorageOnload()
+
+  function cleanLocalStorage() { 
+    
+  }

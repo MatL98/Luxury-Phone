@@ -43,20 +43,26 @@
     
                                         <!-- Smartphones -->
     <section class="container mb-5" id="section__cels">
-        <div id="modal"></div>
-        <h2 class="subtitle" id="animado-1">SmartPhones</h2>
-                <div class="row row-cols-sm-1 row-cols-md-2 row-cols-lg-4" id="rowCards">
-                </div>
-                
+        <div id="modal" tabindex="-1" style="display: none;">
+            <div class="modal-overlay"></div>
+            <div id="modal-cel">
+
             </div>
-    </section>
+        </div>
+        <h2 class="subtitle" id="animado-1">SmartPhones</h2>
+        <div class="row row-cols-sm-1 row-cols-md-2 row-cols-lg-4" id="rowCards">
+        </div>
+        
+    </div>
+</section>
 
 
 
-                                    <!-- Cart -->
+<!-- Cart -->
     <section class="container mb-5" id="section__cart">
             <h2 class="subtitle" id="animado-2">Carrito</h2>
-                <table class="table">
+            <div class="row">
+                <table class="table col-md-6">
                     <thead>
                         <tr>
                             <th scope="col">#</th>
@@ -69,41 +75,65 @@
                         </tr>
                     </thead>
                     <tbody class="tbody">
+
                     </tbody>
                 </table>
-                <div class="row md-4">
-                    <button class="btn btn-success">Comprar</button>
-                </div>
+                    <div class="col">
+                        <button class="btn btn-success">Comprar</button>
+                    </div>
+                    <div class="col">
+                        <button class="btn btn-warning" id="clean">Vaciar carrito</button>
+                    </div>
+            </div>
     </section>
                                     <!-- Form -->
     <section class="container mb-5" id="section__form">
         <div>
                 <h2 class="subtitle" id="animado-3">Registrate</h2>
-                <div class="row row-cols-sm-1 row-cols-md-2 row-cols-lg-4" id="">
-                    <form id="formulario">
+                <div class="modal" tabindex="-1">
+                    <div class="modal-overlay"></div>
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Te haz regristrado!</h5>
+                        </div>
+                        <div class="modal-body" id="modal-body">
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-info" id="btn-modal">X</button>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row row-cols-sm-1" id="">
+                    <form id="formulario" action="#">
                         <div class="container form">
                             <div class="mb-3">
                                 <label class="form-label">Email</label>
-                                <input type="email" class="form-control" id="mail" name="mail">
+                                <input type="email" class="form-control" id="mail" name="mail" required placeholder="Ingrese un mail">
                                 <span class="span-alert" id="alert-mail">Ingrese un email</span>
                         </div>
                         <div class="mb-3">
+                                <label class="form-label">Nombre</label>
+                                <input type="text" class="form-control" id="name" name="nameUser" required placeholder="Ingrese su nombre">
+                                <span class="span-alert" id="alert-name">Ingrese su nombre</span>
+                        </div>
+                        <div class="mb-3">
                                 <label class="form-label">Usuario</label>
-                                <input type="text" class="form-control" id="user" name="usuario">
+                                <input type="text" class="form-control" id="user" name="usuario" required placeholder="Ingrese un usuario">
                                 <span class="span-alert" id="alert-user" >Ingrese un nombre de Usuario</span>
                         </div>
                         <div class="mb-3">
                                 <label class="form-label" ">Contraseña</label>
-                                <input type="password" class="form-control" id="pass" name="contrasenia">
-                                <span class="span-alert" id="alert-pass" >Ingrese una constrasenia</span>
+                                <input type="password" class="form-control" id="pass" name="contrasenia" required placeholder="Ingrese contraseña">
+                                <span class="span-alert" id="alert-pass" >Ingrese una constraseña</span>
                         </div>
-                        <div class="mb-3 form-check">
-                                <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                                <label class="form-check-label" for="exampleCheck1">Acepto los terminos y condiciones</label>
-                        </div>
+                        <div>
                             <button type="submit" class="btn btn-primary" id="btn-form">Registrarme</button>
-                    </form>
+                            <button type="reset" class="btn btn-primary">Resetear</button>
                         </div>
+                    </form>
+                    </div>
                         
                     </div>
             </div>
@@ -125,8 +155,9 @@
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
     </script>
     <script src="form.js"></script>
-    <script src="script.js"></script>
-    <script src="animation.min.js"></script>
+    <script src="script.js" type="module"></script>
+    <script src="SmartPhones.js"></script>
+    <script src="animation.js"></script>
 
 </body>
 

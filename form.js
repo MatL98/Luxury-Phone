@@ -1,53 +1,55 @@
-
-    //let expr = /∧[a-zA-Z0-9_\.\-]+@[a-zA-Z0-9\-]+\.[a-zA-Z0-9\-\.]+$/;
-
-
-    /* const formulario = document.getElementById('formulario')
-    const inputs = document.querySelectorAll('#formulario input')
-
-    const validarFormulario = (e) =>{
-       switch(e.target.name){
-           case "mail":
-            console.log("fff")
-           break;
-       
-            case "user":
-            console.log("fff")
-           break;
-
-           case "contrasenia":
-            console.log("fff")
-           break;
-       }
-    }
-
-    inputs.forEach((input)=>{
-        input.addEventListener('keyup', validarFormulario());
-        input.addEventListener('keyup', validarFormulario());
-    })
+$(document).ready(function () {
     
-    formulario.addEventListener("submit", (e)=>{
-        e.preventDefault()
-    }) 
-         */
 
-/* $(document).ready(function () {
     
-    const URLJSON = "https://jsonplaceholder.typicode.com/posts";
+    const mail = $("input#mail");
+    const nombre = $("input#name");
+    const user = $("input#user");
+    const pass = $("input#pass");
+    const btnSendInfo = $("#btn-form");
+    const APIurl = 'https://jsonplaceholder.typicode.com/posts';
 
-    const infoPost = { nombre: "juan", curso: "front-end" };
+    btnSendInfo.on("click" , function(e){
+        e.preventDefault();
+        
 
-    $(".insert").prepend('<button id="btn1">info</button>');
+        if ((mail.val() === "")) {
+            $("#alert-mail").fadeIn("slow").fadeOut("slow");
+        } if (nombre.val() === ""){
+            $("#alert-name").fadeIn("slow").fadeOut("slow");
+        } if (user.val() === ""){
+            $("#alert-user").fadeIn("slow").fadeOut("slow");
+        } if (pass.val() === ""){
+            $("#alert-pass").fadeIn("slow").fadeOut("slow");
+        } 
 
-    $("#btn1").click(() => {
-        $.ajax({
-        method: "post",
-        url: URLJSON,
-        data: infoPost,
-        success: function (res) {
-            $(".insert").prepend(`<div>${res.nombre}</div>`);
-        },
+
+        if((mail.val() !== "") && (nombre.val() !== "") && (user.val() !== "" ) && (pass.val() !== "")){
+            const infoForm = JSON.stringify({mail: mail.val(), nombre: nombre.val(), user: user.val(), pass: pass.val()})
+            $.ajax({
+            method: "post",
+            url: APIurl,
+            data: infoForm,
+            success: function (res) {
+                $(".modal-overlay").css("opacity" , "1")
+                $(".modal").css("display", "block");
+                const modalForm = $("#modal-body")
+                modalForm.append(`<p>${nombre.val()} te registraste con exito en LuxuryPhone con los siguientes datos: <br>
+                mail: ${mail.val()} y tu usuario es: ${user.val()} <br> Ahora podes disfrutar de tus compras!! </p>`);
+            },
         });
-    });
+        $(document).keyup(function (e) {
+        if (e.keyCode === 27) {
+            $(".modal").hide();
+        }
+        });
+        $("#btn-modal").click(function(){
+        $(".modal").hide();
+        });
+    }
+    })
+        
+
+
+
 });
- */
