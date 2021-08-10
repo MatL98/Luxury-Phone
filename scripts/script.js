@@ -15,10 +15,10 @@ let carrito = [];
         <ul class="list-group list-group-flush">
             <li class="list-group-item" id="price">${phone.precio}</li>
             <li class="list-group-item" id="stock">Stock: ${phone.stock}</li>
-            <li class="list-group-item" id="id">ID: ${phone.id}</li>
+            <li class="list-group-item" id="id">${phone.id}</li>
         </ul>
         <div class="card-body">
-            <button class= "btn" id = "btn-carrito">Agregar al carrito</button>
+            <button class= "btn" id ="btn-carrito">Agregar al carrito</button>
         </div>
         </div>
                                 `);
@@ -67,6 +67,7 @@ function addToCarrito(e) {
   const price = item.querySelector("#price").textContent;
   const value = parseInt(price);
   const id = item.querySelector("#id").textContent;
+  const idNum = parseInt(id);
   const iva = ivaDeItem(value);
   const envio = costoEnvio(value);
   const total = totalItem(value, iva, envio);
@@ -74,7 +75,7 @@ function addToCarrito(e) {
   const newItem = {
     title: title,
     price: value,
-    id: id,
+    id: idNum,
     iva: iva,
     envio: envio,
     total: total,
@@ -90,38 +91,25 @@ const totalItem = (a, b, c) => a + b + c;
 function addItemCarrito(newItem) {
   const inputCantidad = bodyCarrito.querySelector("#cantidad");
 
-  for (let i = 1; i < carrito.length; i++) {
-    if (carrito[i].title === newItem.title) {
-      carrito[i].cantidad;
-      const inputValue = inputCantidad[i];
-      inputValue.value;
-      //return null;
-      console.log(inputValue);
-    }
-  }
+  const nCantidad = Object.values(carrito).reduce((acc, {cantidad})=> acc + cantidad, 1)
+  console.log(nCantidad)
   carrito.push(newItem);
-  renderCarrito();
 
+  renderCarrito();
   carritoTotalFinal();
   
 }
 
 function carritoTotalFinal() {
   setLocalStorage("carrito", carrito);
-  console.log(carrito)
-  /* let totalItems = 0;
-  carrito.map((car) => {
-    totalItems = car.total;
-  });
+  const nPrecio = Object.values(carrito).reduce((acc, {cantidad, total})=> acc + cantidad * total , 0)
+  console.log(nPrecio)
 
-  document
-    .querySelector(".tbody")
-    .append(`Total de la compra: $ ${totalItems}`); */
 }
+
 
 function removeItemCarrito(e) {
   e.target.parentNode.parentNode.remove();
-  
 }
 
 function cleanCarrito() { 
@@ -132,11 +120,10 @@ function cleanCarrito() {
     list.forEach(c => {
       c.remove()
     });
+    cleanLocalStorage()
   })
 }
 
-
-//Almacena datos del carrito
 function setLocalStorage(itemName, item) {
   let temp = JSON.parse(localStorage.getItem(itemName))
   if(temp){
@@ -147,7 +134,6 @@ function setLocalStorage(itemName, item) {
   }
   localStorage.setItem(itemName, JSON.stringify(temp));
 }
-
 function getLocalStorageOnload() {
   if (localStorage.getItem("carrito")) {
     let itemDeCarrito = JSON.parse(localStorage.getItem("carrito"));
@@ -157,5 +143,6 @@ function getLocalStorageOnload() {
   getLocalStorageOnload()
 
   function cleanLocalStorage() { 
-    
-  }
+    localStorage.clear()
+  } 
+  

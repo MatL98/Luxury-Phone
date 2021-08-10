@@ -16,149 +16,136 @@
 </head>
 
 <body>
-                                    <!-- NavBar -->
-    
-    <header class="bg-whitesmoke py-3 mb-4 fixed-top" id="nav">
-        <div class="container d-flex flex-wrap justify-content-center">
-            <a class="d-flex align-items-c mbenter mb-3-md-0 me-md-auto text-dark text-decoration-none" href="/index.html">
-                <h1 class="title">Luxury Phones</h1>
-            </a>
-            <ul class="nav nav-pills mb-1 mt-1">
-                <li class="nav-item"><a class="nav-link" id="nav-home" href="#section__home"><span>Home</span></a></li>
-                <li class="nav-item"><a class="nav-link" id="nav-cel" href="#section__cels"><span>SmartPhones</span></a></li>
-                <li class="nav-item"><a class="nav-link" id="nav-cart" href="#section__cart"><span>Carrito</span></a></li>
-                <li class="nav-item"><a class="nav-link" id="nav-form" href="#section__form"><span>Registrarme</span></a></li>
-            </ul>
-    </header>
-    
-        <section id="section__home">
-            <div class="row container__homepage">
-                <span class=" col-sm-6 col-md-6 hero-span" id="hero-span">Luxury phones</span>
-                <span class=" col-sm-6 col-md-5 hero-span-2" id="hero-span-2">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laboriosam voluptate fugit quas quo omnis eveniet 
-                    quisquam voluptates exercitationem. Sequi, dolor.</span>
-            </div>
-        </div>
-    </section>
-    
-    
-                                        <!-- Smartphones -->
-    <section class="container mb-5" id="section__cels">
-        <div id="modal" tabindex="-1" style="display: none;">
-            <div class="modal-overlay"></div>
-            <div id="modal-cel">
+<!-- NavBar -->
+	<header class="bg-whitesmoke py-3 mb-4 fixed-top" id="nav">
+		<div class="container d-flex flex-wrap justify-content-center">
+			<a class="d-flex align-items-c mbenter mb-3-md-0 me-md-auto text-dark text-decoration-none" href="/index.html">
+					<h1 class="title">Luxury Phones</h1>
+			</a>
+			<ul class="nav nav-pills mb-1 mt-1">
+					<li class="nav-item"><a class="nav-link" id="nav-home" href="#section__home"><span>Home</span></a></li>
+					<li class="nav-item"><a class="nav-link" id="nav-cel" href="#section__cels"><span>SmartPhones</span></a></li>
+					<li class="nav-item"><a class="nav-link" id="nav-cart" href="#section__cart"><span>Carrito</span></a></li>
+					<li class="nav-item"><a class="nav-link" id="nav-form" href="#section__form"><span>Registrarme</span></a></li>
+			</ul>
+	</header>
+	<!-- Home -->
+	<section id="section__home">
+		<div class="row container__homepage">
+			<span class=" col-sm-6 col-md-6 hero-span" id="hero-span">Luxury phones</span>
+			<span class=" col-sm-6 col-md-5 hero-span-2" id="hero-span-2">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laboriosam voluptate fugit quas quo omnis eveniet 
+								quisquam voluptates exercitationem. Sequi, dolor.</span>
+		</div>
+	</section>
+	<!-- Smartphones -->
+	<section class="container mb-5" id="section__cels">
+		<div id="modal" tabindex="-1" style="display: none;">
+				<div class="modal-overlay"></div>
+				<div id="modal-cel">
 
-            </div>
-        </div>
-        <h2 class="subtitle" id="animado-1">SmartPhones</h2>
-        <div class="row row-cols-sm-1 row-cols-md-2 row-cols-lg-4" id="rowCards">
-        </div>
-        
-    </div>
-</section>
+				</div>
+		</div>
+			<h2 class="subtitle" id="animado-1">SmartPhones</h2>
+			<div class="row row-cols-sm-1 row-cols-md-2 row-cols-lg-4" id="rowCards">
+			</div>
+	</section>
+	<!-- Cart -->
+	<section class="container mb-5" id="section__cart">
+		<h2 class="subtitle" id="animado-2">Carrito</h2>
+		<div class="row">
+				<table class="table col-md-6">
+						<thead>
+								<tr>
+										<th scope="col">#</th>
+										<th scope="col">Telefono</th>
+										<th scope="col">Precio</th>
+										<th scope="col">Cantidad</th>
+										<th scope="col">Iva</th>
+										<th scope="col">Envio</th>
+										<th scope="col">Total</th>
+								</tr>
+						</thead>
+						<tbody class="tbody">
 
+						</tbody>
+				</table>
+						<div class="col">
+								<button class="btn btn-success" id="btn-buy">Comprar</button>
+						</div>
+						<div class="col">
+								<button class="btn btn-warning" id="clean">Vaciar carrito</button>
+						</div>
+		</div>
+	</section>
+	<!-- Form -->
+	<section class="container mb-5" id="section__form">
+		<div>
+			<h2 class="subtitle" id="animado-3">Registrate</h2>
+			<div class="modal" tabindex="-1">
+					<div class="modal-overlay"></div>
+					<div class="modal-dialog modal-dialog-centered">
+							<div class="modal-content">
+							<div class="modal-header">
+									<h5 class="modal-title">Te haz regristrado!</h5>
+							</div>
+							<div class="modal-body" id="modal-body">
+							</div>
+							<div class="modal-footer">
+									<button type="button" class="btn btn-info" id="btn-modal">X</button>
+							</div>
+							</div>
+					</div>
+			</div>
+			<div class="row row-cols-sm-1" id="">
+				<form id="formulario" action="#">
+					<div class="container form">
+						<div class="mb-3">
+								<label class="form-label">Email</label>
+								<input type="email" class="form-control" id="mail" name="mail" required placeholder="Ingrese un mail">
+								<span class="span-alert" id="alert-mail">Ingrese un email</span>
+						</div>
+						<div class="mb-3">
+								<label class="form-label">Nombre</label>
+								<input type="text" class="form-control" id="name" name="nameUser" required placeholder="Ingrese su nombre">
+								<span class="span-alert" id="alert-name">Ingrese su nombre</span>
+						</div>
+						<div class="mb-3">
+								<label class="form-label">Usuario</label>
+								<input type="text" class="form-control" id="user" name="usuario" required placeholder="Ingrese un usuario">
+								<span class="span-alert" id="alert-user" >Ingrese un nombre de Usuario</span>
+						</div>
+						<div class="mb-3">
+								<label class="form-label" ">Contraseña</label>
+								<input type="password" class="form-control" id="pass" name="contrasenia" required placeholder="Ingrese contraseña">
+								<span class="span-alert" id="alert-pass" >Ingrese una constraseña</span>
+						</div>
+						<div>
+								<button type="submit" class="btn btn-primary" id="btn-form">Registrarme</button>
+								<button type="reset" class="btn btn-primary">Resetear</button>
+						</div>
+				</form>
+			</div>
+		</div>
+	</section>
+	<!-- Footer-->
+	<footer class="footer mt-auto">
+		<div class="container-footer">
+			<div class="RRSS">
+				<a href="https://www.instagram.com/"><img class="imgs" src="/img/instagram (4).png"></a>
+				<h4>Desarrollado por Matias</h4>
+				<a href="https://www.linkedin.com/feed/"><img class="imgs" src="/img/linkedin (1).png"></a>
+		</div>
+	</footer>
 
-
-<!-- Cart -->
-    <section class="container mb-5" id="section__cart">
-            <h2 class="subtitle" id="animado-2">Carrito</h2>
-            <div class="row">
-                <table class="table col-md-6">
-                    <thead>
-                        <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">Telefono</th>
-                            <th scope="col">Precio</th>
-                            <th scope="col">Cantidad</th>
-                            <th scope="col">Iva</th>
-                            <th scope="col">Envio</th>
-                            <th scope="col">Total</th>
-                        </tr>
-                    </thead>
-                    <tbody class="tbody">
-
-                    </tbody>
-                </table>
-                    <div class="col">
-                        <button class="btn btn-success">Comprar</button>
-                    </div>
-                    <div class="col">
-                        <button class="btn btn-warning" id="clean">Vaciar carrito</button>
-                    </div>
-            </div>
-    </section>
-                                    <!-- Form -->
-    <section class="container mb-5" id="section__form">
-        <div>
-                <h2 class="subtitle" id="animado-3">Registrate</h2>
-                <div class="modal" tabindex="-1">
-                    <div class="modal-overlay"></div>
-                    <div class="modal-dialog modal-dialog-centered">
-                        <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title">Te haz regristrado!</h5>
-                        </div>
-                        <div class="modal-body" id="modal-body">
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-info" id="btn-modal">X</button>
-                        </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row row-cols-sm-1" id="">
-                    <form id="formulario" action="#">
-                        <div class="container form">
-                            <div class="mb-3">
-                                <label class="form-label">Email</label>
-                                <input type="email" class="form-control" id="mail" name="mail" required placeholder="Ingrese un mail">
-                                <span class="span-alert" id="alert-mail">Ingrese un email</span>
-                        </div>
-                        <div class="mb-3">
-                                <label class="form-label">Nombre</label>
-                                <input type="text" class="form-control" id="name" name="nameUser" required placeholder="Ingrese su nombre">
-                                <span class="span-alert" id="alert-name">Ingrese su nombre</span>
-                        </div>
-                        <div class="mb-3">
-                                <label class="form-label">Usuario</label>
-                                <input type="text" class="form-control" id="user" name="usuario" required placeholder="Ingrese un usuario">
-                                <span class="span-alert" id="alert-user" >Ingrese un nombre de Usuario</span>
-                        </div>
-                        <div class="mb-3">
-                                <label class="form-label" ">Contraseña</label>
-                                <input type="password" class="form-control" id="pass" name="contrasenia" required placeholder="Ingrese contraseña">
-                                <span class="span-alert" id="alert-pass" >Ingrese una constraseña</span>
-                        </div>
-                        <div>
-                            <button type="submit" class="btn btn-primary" id="btn-form">Registrarme</button>
-                            <button type="reset" class="btn btn-primary">Resetear</button>
-                        </div>
-                    </form>
-                    </div>
-                        
-                    </div>
-            </div>
-    </section>
-
-                                    <!-- Footer-->
-    <footer class="footer mt-auto">
-        <div class="container-footer">
-            <div class="RRSS">
-                <a href="https://www.instagram.com/"><img class="imgs" src="/img/instagram (4).png"></a>
-                <h4>Desarrollado por Matias</h4>
-                <a href="https://www.linkedin.com/feed/"><img class="imgs" src="/img/linkedin (1).png"></a>
-            </div>
-    </footer>
-
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"
         integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
-    </script>
-    <script src="form.js"></script>
-    <script src="script.js" type="module"></script>
-    <script src="SmartPhones.js"></script>
-    <script src="animation.js"></script>
-
+	</script>
+	<script src="./scripts/form.js"></script>
+	<script src="./scripts/script.js" type="module"></script>
+	<script src="./scripts/SmartPhones.js"></script>
+	<script src="./scripts/animation.js"></script>
 </body>
 
 </html>
