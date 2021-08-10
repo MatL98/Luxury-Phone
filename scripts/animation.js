@@ -63,8 +63,16 @@ $(document).ready(function () {
   $("#modal-cel").append(`<h5> Se agregó al carrito </h5>`);
   $("h5").addClass("alert-buy");
   $("button#btn-carrito").click(function () {
-    $(".modal-overlay").css("opacity", "1");
     let divModal = $("div#modal");
     divModal.slideDown("slow").fadeOut("slow");
+  });
+  
+  $("button#btn-buy").click(function () {
+    $(".modal-overlay").css("opacity", "1");
+    let divModal = $("div#modal-2");
+    divModal.css("display", "block");
+  });
+	$("#btn-modal-2").click(function () {
+    $(".modal").hide();
   });
 });

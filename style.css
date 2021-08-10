@@ -163,13 +163,13 @@ body {
 }
 #modal{
   position: fixed;
-    top: 50%;
-    left: 40%;
-    z-index: 1300;
-    width: 25%;
-    height: 5%;
-    overflow: hidden;
-    outline: 0;
+  top: 50%;
+  left: 40%;
+  z-index: 1300;
+  width: 25%;
+  height: 5%;
+  overflow: hidden;
+  outline: 0;
 }
 
 .alert-buy {
@@ -179,7 +179,7 @@ body {
   justify-content: center;
   padding: 0.3rem;
 }
-      /* SECTION CART */
+/* SECTION CART */
 #section__cart {
   margin-top: 4rem;
   overflow: scroll;
@@ -188,8 +188,12 @@ body {
   background-color: rgb(28, 160, 28);
   color: aliceblue;
 }
+#pModal{
+  font-family: "Roboto", sans-serif;
+  font-size: 1.2rem;
+}
 
-      /* SECTION FORM */
+/* SECTION FORM */
 
 #section__form{
   margin-top: 12rem;

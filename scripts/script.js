@@ -29,7 +29,7 @@ const bodyCarrito = document.querySelector(".tbody");
 function renderCarrito() {
   bodyCarrito.innerHTML = "";
   carrito.map((item) => {
-    var tr = document.createElement("tr");
+    let tr = document.createElement("tr");
     tr.classList.add("itemCarrito");
     const contenido = `
         <td scope="row">${item.id}</td>
@@ -88,23 +88,24 @@ const costoEnvio = (s) => s * 0.3;
 const ivaDeItem = (x) => x * 0.21;
 const totalItem = (a, b, c) => a + b + c;
 
-function addItemCarrito(newItem) {
-  const inputCantidad = bodyCarrito.querySelector("#cantidad");
-
-  const nCantidad = Object.values(carrito).reduce((acc, {cantidad})=> acc + cantidad, 1)
-  console.log(nCantidad)
+function addItemCarrito(newItem) { 
   carrito.push(newItem);
-
   renderCarrito();
   carritoTotalFinal();
-  
 }
 
 function carritoTotalFinal() {
   setLocalStorage("carrito", carrito);
+  
+  const btnBuy = document.querySelector("button#btn-buy")
+  console.log(btnBuy)
+  btnBuy.addEventListener("click", function(){
+  const nCantidad = Object.values(carrito).reduce((acc, {cantidad})=> acc + cantidad, 0)
   const nPrecio = Object.values(carrito).reduce((acc, {cantidad, total})=> acc + cantidad * total , 0)
-  console.log(nPrecio)
-
+    let modalText = `El total de tus items es: <strong>${nCantidad}</strong> por un precio de: $ ${nPrecio} <br> Muchas Gracias por tu compra!`
+    let pBuyText = document.querySelector("p#pModal")
+    pBuyText.innerHTML = modalText;
+  })
 }
 
 
@@ -115,7 +116,7 @@ function removeItemCarrito(e) {
 function cleanCarrito() { 
   let list = document.querySelectorAll(".tbody")
   let btnClean = document.querySelector("#clean")
-
+  
   btnClean.addEventListener("click" , function () {
     list.forEach(c => {
       c.remove()
@@ -128,7 +129,7 @@ function setLocalStorage(itemName, item) {
   let temp = JSON.parse(localStorage.getItem(itemName))
   if(temp){
     temp = {...temp, item}
-
+    
   }else{
     temp = {item};
   }
@@ -141,7 +142,7 @@ function getLocalStorageOnload() {
     renderCarrito()
   } else {""}}
   getLocalStorageOnload()
-
+  
   function cleanLocalStorage() { 
     localStorage.clear()
   } 

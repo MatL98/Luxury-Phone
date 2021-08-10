@@ -16,7 +16,7 @@
 </head>
 
 <body>
-<!-- NavBar -->
+	<!-- NavBar -->
 	<header class="bg-whitesmoke py-3 mb-4 fixed-top" id="nav">
 		<div class="container d-flex flex-wrap justify-content-center">
 			<a class="d-flex align-items-c mbenter mb-3-md-0 me-md-auto text-dark text-decoration-none" href="/index.html">
@@ -40,41 +40,56 @@
 	<!-- Smartphones -->
 	<section class="container mb-5" id="section__cels">
 		<div id="modal" tabindex="-1" style="display: none;">
-				<div class="modal-overlay"></div>
 				<div id="modal-cel">
-
+					
 				</div>
 		</div>
-			<h2 class="subtitle" id="animado-1">SmartPhones</h2>
-			<div class="row row-cols-sm-1 row-cols-md-2 row-cols-lg-4" id="rowCards">
-			</div>
+		<h2 class="subtitle" id="animado-1">SmartPhones</h2>
+		<div class="row row-cols-sm-1 row-cols-md-2 row-cols-lg-4" id="rowCards">
+		</div>
 	</section>
 	<!-- Cart -->
 	<section class="container mb-5" id="section__cart">
+		<div class="modal" id="modal-2" tabindex="-1" style="display: none;">
+				<div class="modal-overlay"></div>
+				<div class="modal-dialog modal-dialog-centered">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h5 class="modal-title">Tu compra fue procesada!</h5>
+						</div>
+						<div class="modal-body" id="modal-body-2">
+							<p id="pModal"></p>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-info" id="btn-modal-2">X</button>
+						</div>
+					</div>
+				</div>
+		</div>
 		<h2 class="subtitle" id="animado-2">Carrito</h2>
 		<div class="row">
-				<table class="table col-md-6">
-						<thead>
-								<tr>
-										<th scope="col">#</th>
-										<th scope="col">Telefono</th>
-										<th scope="col">Precio</th>
-										<th scope="col">Cantidad</th>
-										<th scope="col">Iva</th>
-										<th scope="col">Envio</th>
-										<th scope="col">Total</th>
-								</tr>
-						</thead>
-						<tbody class="tbody">
-
-						</tbody>
-				</table>
-						<div class="col">
-								<button class="btn btn-success" id="btn-buy">Comprar</button>
-						</div>
-						<div class="col">
-								<button class="btn btn-warning" id="clean">Vaciar carrito</button>
-						</div>
+			<table class="table col-md-6">
+				<thead>
+					<tr>
+						<th scope="col">#</th>
+						<th scope="col">Telefono</th>
+						<th scope="col">Precio</th>
+						<th scope="col">Cantidad</th>
+						<th scope="col">Iva</th>
+						<th scope="col">Envio</th>
+						<th scope="col">Total</th>
+					</tr>
+				</thead>
+				<tbody class="tbody">
+					
+				</tbody>
+			</table>
+			<div class="col">
+				<button class="btn btn-success" id="btn-buy">Comprar</button>
+			</div>
+			<div class="col">
+				<button class="btn btn-warning" id="clean">Vaciar carrito</button>
+			</div>
 		</div>
 	</section>
 	<!-- Form -->
@@ -82,19 +97,19 @@
 		<div>
 			<h2 class="subtitle" id="animado-3">Registrate</h2>
 			<div class="modal" tabindex="-1">
-					<div class="modal-overlay"></div>
-					<div class="modal-dialog modal-dialog-centered">
-							<div class="modal-content">
-							<div class="modal-header">
-									<h5 class="modal-title">Te haz regristrado!</h5>
-							</div>
-							<div class="modal-body" id="modal-body">
-							</div>
-							<div class="modal-footer">
-									<button type="button" class="btn btn-info" id="btn-modal">X</button>
-							</div>
-							</div>
+				<div class="modal-overlay"></div>
+				<div class="modal-dialog modal-dialog-centered">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h5 class="modal-title">Te haz regristrado!</h5>
+						</div>
+						<div class="modal-body" id="modal-body">
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-info" id="btn-modal">X</button>
+						</div>
 					</div>
+				</div>
 			</div>
 			<div class="row row-cols-sm-1" id="">
 				<form id="formulario" action="#">
@@ -144,7 +159,7 @@
 	</script>
 	<script src="./scripts/form.js"></script>
 	<script src="./scripts/script.js" type="module"></script>
-	<script src="./scripts/SmartPhones.js"></script>
+	<script src="./scripts/SmartPhones.js" type="module"></script>
 	<script src="./scripts/animation.js"></script>
 </body>
 
