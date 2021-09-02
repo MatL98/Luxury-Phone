@@ -38,9 +38,11 @@ $(document).ready(function () {
     if ($(window).scrollTop() > $("#section__cels").offset().top - 200) {
       $("#nav").addClass("navbar__nav-color");
       $(".nav-link").addClass("nav-link-color");
+      $('#burger button span').css("background", "#e4a106")
     } else {
       $("#nav").removeClass("navbar__nav-color");
       $(".nav-link").removeClass("nav-link-color");
+      $('#burger button span').css("background", "white")
     }
   });
   /* Animacion Titulos */
@@ -75,4 +77,13 @@ $(document).ready(function () {
 	$("#btn-modal-2").click(function () {
     $(".modal").hide();
   });
+
+  /* Buerguer Nav */
+  let btn = $("#btnB");
+      btn.click(function(){
+        btn.toggleClass('open')
+        let nav = $('#nav-burger');
+        nav.toggleClass('closed');
+        
+    });
 });

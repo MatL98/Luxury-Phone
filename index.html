@@ -18,16 +18,27 @@
 <body>
 	<!-- NavBar -->
 	<header class="bg-whitesmoke py-3 mb-4 fixed-top" id="nav">
-		<div class="container d-flex flex-wrap justify-content-center">
+		<div class="container d-flex  justify-content-center">
 			<a class="d-flex align-items-c mbenter mb-3-md-0 me-md-auto text-dark text-decoration-none" href="/index.html">
 					<h1 class="title">Luxury Phones</h1>
 			</a>
-			<ul class="nav nav-pills mb-1 mt-1">
+			<div id="nav-burger" class="close">
+				<ul class="nav nav-pills mb-1 mt-1">
 					<li class="nav-item"><a class="nav-link" id="nav-home" href="#section__home"><span>Home</span></a></li>
 					<li class="nav-item"><a class="nav-link" id="nav-cel" href="#section__cels"><span>SmartPhones</span></a></li>
 					<li class="nav-item"><a class="nav-link" id="nav-cart" href="#section__cart"><span>Carrito</span></a></li>
 					<li class="nav-item"><a class="nav-link" id="nav-form" href="#section__form"><span>Registrarme</span></a></li>
-			</ul>
+				</ul>
+			</div>
+			
+				<div id="burger">
+					<button id="btnB">
+						<span class="top-line"></span>
+						<span class="mid-line" ></span>
+						<span class="bottom-line"></span>
+					</button>
+				</div>
+		</div>
 	</header>
 	<!-- Home -->
 	<section id="section__home">
